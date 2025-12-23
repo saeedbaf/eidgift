@@ -11,7 +11,7 @@ body {
   background: white;
   padding: 25px;
   border-radius: 10px;
-  width: 300px;
+  width: 320px;
   text-align: center;
 }
 
@@ -21,11 +21,16 @@ button {
   cursor: pointer;
 }
 
+select {
+  padding: 8px;
+  width: 80%;
+}
+
 .hidden {
   display: none;
 }
 
-#assignment {
+#resultText {
   font-size: 18px;
   font-weight: bold;
   margin: 15px 0;
