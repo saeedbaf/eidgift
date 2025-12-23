@@ -11,7 +11,7 @@ body {
   background: white;
   padding: 25px;
   border-radius: 10px;
-  width: 320px;
+  width: 330px;
   text-align: center;
 }
 
@@ -21,13 +21,18 @@ button {
   cursor: pointer;
 }
 
-select {
+select, input {
   padding: 8px;
   width: 80%;
 }
 
 .hidden {
   display: none;
+}
+
+#error {
+  color: red;
+  font-size: 14px;
 }
 
 #resultText {
