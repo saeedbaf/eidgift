@@ -1,41 +1,32 @@
-let names = [];
+const females = ["Sarah", "Hafsa", "Ohood"];
+const males = ["Yousef", "Qais", "Saeed", "Faisal"];
 
-function addName() {
-  const input = document.getElementById("nameInput");
-  const name = input.value.trim();
-
-  if (name && !names.includes(name)) {
-    names.push(name);
-    updateList();
-    input.value = "";
-  }
-}
-
-function updateList() {
-  const list = document.getElementById("nameList");
-  list.innerHTML = "";
-  names.forEach(name => {
-    const li = document.createElement("li");
-    li.textContent = name;
-    list.appendChild(li);
-  });
-}
-
-function generateSanta() {
-  if (names.length < 2) {
-    alert("Add at least 2 people!");
-    return;
-  }
-
-  let shuffled = [...names];
+function shuffleAndAssign(group) {
+  let shuffled;
   do {
-    shuffled.sort(() => Math.random() - 0.5);
-  } while (shuffled.some((name, i) => name === names[i]));
+    shuffled = [...group].sort(() => Math.random() - 0.5);
+  } while (shuffled.some((name, i) => name === group[i]));
 
-  let output = "";
-  for (let i = 0; i < names.length; i++) {
-    output += `${names[i]} ➝ ${shuffled[i]}<br>`;
-  }
+  return shuffled;
+}
 
-  document.getElementById("result").innerHTML = output;
+function selectGroup(gender) {
+  const group = gender === "female" ? females : males;
+  const assignments = shuffleAndAssign(group);
+
+  // Pick a random person to reveal
+  const index = Math.floor(Math.random() * group.length);
+  const giver = group[index];
+  const receiver = assignments[index];
+
+  document.getElementById("choice").classList.add("hidden");
+  document.getElementById("result").classList.remove("hidden");
+
+  document.getElementById("assignment").innerHTML =
+    `${giver}, you are buying a gift for <br>🎁 <strong>${receiver}</strong>`;
+}
+
+function reset() {
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("choice").classList.remove("hidden");
 }
