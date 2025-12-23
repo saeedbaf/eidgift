@@ -9,15 +9,25 @@
   <div class="container">
     <h1>🎄 Secret Santa</h1>
 
-    <div id="choice">
+    <!-- Gender Selection -->
+    <div id="genderSection">
       <p>Select your group:</p>
-      <button onclick="selectGroup('female')">Female</button>
-      <button onclick="selectGroup('male')">Male</button>
+      <button onclick="selectGender('female')">Female</button>
+      <button onclick="selectGender('male')">Male</button>
     </div>
 
-    <div id="result" class="hidden">
-      <p id="assignment"></p>
-      <button onclick="reset()">Back</button>
+    <!-- Name Selection -->
+    <div id="nameSection" class="hidden">
+      <p>Select your name:</p>
+      <select id="nameDropdown"></select>
+      <br>
+      <button onclick="revealAssignment()">Reveal</button>
+    </div>
+
+    <!-- Result -->
+    <div id="resultSection" class="hidden">
+      <p id="resultText"></p>
+      <button onclick="reset()">Start Over</button>
     </div>
   </div>
 
