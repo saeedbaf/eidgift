@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 8px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+#assignment {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 0;
+}
