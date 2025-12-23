@@ -2,35 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Secret Santa</title>
+  <title>هدية العيد</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>🎄 Secret Santa</h1>
+    <h1> هدية العيد</h1>
 
     <!-- Gender -->
     <div id="genderSection">
-      <p>Select your group:</p>
-      <button onclick="selectGender('female')">Female</button>
-      <button onclick="selectGender('male')">Male</button>
+      <p>اختر مجموعتك:</p>
+      <button onclick="selectGender('female')">النساء</button>
+      <button onclick="selectGender('male')">الرجال</button>
     </div>
 
     <!-- Name -->
     <div id="nameSection" class="hidden">
-      <p>Select your name:</p>
+      <p>اختر اسمك:</p>
       <select id="nameDropdown"></select>
       <br><br>
-      <input type="password" id="codeInput" placeholder="Enter 6-digit code">
+      <input type="password" id="codeInput" placeholder="أدخل الرمز المكون من 6 أرقام">
       <br>
-      <button onclick="revealAssignment()">Reveal</button>
+      <button onclick="revealAssignment()">Continue</button>
       <p id="error" class="error"></p>
     </div>
 
     <!-- Result -->
     <div id="resultSection" class="hidden">
       <p id="resultText"></p>
-      <button onclick="reset()">Start Over</button>
+      <button onclick="reset()">البدء من جديد</button>
     </div>
   </div>
 
