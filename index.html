@@ -9,19 +9,22 @@
   <div class="container">
     <h1>🎄 Secret Santa</h1>
 
-    <!-- Gender Selection -->
+    <!-- Gender -->
     <div id="genderSection">
       <p>Select your group:</p>
       <button onclick="selectGender('female')">Female</button>
       <button onclick="selectGender('male')">Male</button>
     </div>
 
-    <!-- Name Selection -->
+    <!-- Name -->
     <div id="nameSection" class="hidden">
       <p>Select your name:</p>
       <select id="nameDropdown"></select>
+      <br><br>
+      <input type="password" id="codeInput" placeholder="Enter 6-digit code">
       <br>
       <button onclick="revealAssignment()">Reveal</button>
+      <p id="error" class="error"></p>
     </div>
 
     <!-- Result -->
