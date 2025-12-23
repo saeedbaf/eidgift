@@ -1,32 +1,66 @@
 const females = ["Sarah", "Hafsa", "Ohood"];
 const males = ["Yousef", "Qais", "Saeed", "Faisal"];
 
-function shuffleAndAssign(group) {
-  let shuffled;
-  do {
-    shuffled = [...group].sort(() => Math.random() - 0.5);
-  } while (shuffled.some((name, i) => name === group[i]));
+let femaleAssignments = {};
+let maleAssignments = {};
+let currentGender = "";
 
-  return shuffled;
+// Shuffle helper
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
 }
 
-function selectGroup(gender) {
+// Generate assignments ONCE
+function generateAssignments(group) {
+  let shuffled;
+  do {
+    shuffled = shuffle([...group]);
+  } while (shuffled.some((name, i) => name === group[i]));
+
+  let assignments = {};
+  group.forEach((name, i) => {
+    assignments[name] = shuffled[i];
+  });
+
+  return assignments;
+}
+
+// Generate when page loads
+femaleAssignments = generateAssignments(females);
+maleAssignments = generateAssignments(males);
+
+function selectGender(gender) {
+  currentGender = gender;
+
+  document.getElementById("genderSection").classList.add("hidden");
+  document.getElementById("nameSection").classList.remove("hidden");
+
+  const dropdown = document.getElementById("nameDropdown");
+  dropdown.innerHTML = "";
+
   const group = gender === "female" ? females : males;
-  const assignments = shuffleAndAssign(group);
 
-  // Pick a random person to reveal
-  const index = Math.floor(Math.random() * group.length);
-  const giver = group[index];
-  const receiver = assignments[index];
+  group.forEach(name => {
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    dropdown.appendChild(option);
+  });
+}
 
-  document.getElementById("choice").classList.add("hidden");
-  document.getElementById("result").classList.remove("hidden");
+function revealAssignment() {
+  const name = document.getElementById("nameDropdown").value;
+  const assignments =
+    currentGender === "female" ? femaleAssignments : maleAssignments;
 
-  document.getElementById("assignment").innerHTML =
-    `${giver}, you are buying a gift for <br>🎁 <strong>${receiver}</strong>`;
+  document.getElementById("nameSection").classList.add("hidden");
+  document.getElementById("resultSection").classList.remove("hidden");
+
+  document.getElementById("resultText").innerHTML =
+    `${name}, you are buying a gift for <br>🎁 <strong>${assignments[name]}</strong>`;
 }
 
 function reset() {
-  document.getElementById("result").classList.add("hidden");
-  document.getElementById("choice").classList.remove("hidden");
+  document.getElementById("resultSection").classList.add("hidden");
+  document.getElementById("genderSection").classList.remove("hidden");
 }
