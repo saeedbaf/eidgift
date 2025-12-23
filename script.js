@@ -11,36 +11,25 @@ const codes = {
   Faisal: "789012"
 };
 
-let femaleAssignments = {};
-let maleAssignments = {};
+// 🔒 FIXED ASSIGNMENTS
+const femaleAssignments = {
+  Sarah: "Ohood",
+  Ohood: "Hafsa",
+  Hafsa: "Sarah"
+};
+
+const maleAssignments = {
+  Yousef: "Faisal",
+  Faisal: "Qais",
+  Qais: "Saeed",
+  Saeed: "Yousef"
+};
+
 let currentGender = "";
-
-// Shuffle helper
-function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
-}
-
-// Generate assignments once
-function generateAssignments(group) {
-  let shuffled;
-  do {
-    shuffled = shuffle([...group]);
-  } while (shuffled.some((name, i) => name === group[i]));
-
-  let assignments = {};
-  group.forEach((name, i) => {
-    assignments[name] = shuffled[i];
-  });
-
-  return assignments;
-}
-
-// Generate on load
-femaleAssignments = generateAssignments(females);
-maleAssignments = generateAssignments(males);
 
 function selectGender(gender) {
   currentGender = gender;
+
   document.getElementById("genderSection").classList.add("hidden");
   document.getElementById("nameSection").classList.remove("hidden");
 
