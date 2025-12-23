@@ -1,6 +1,16 @@
 const females = ["Sarah", "Hafsa", "Ohood"];
 const males = ["Yousef", "Qais", "Saeed", "Faisal"];
 
+const codes = {
+  Sarah: "123456",
+  Hafsa: "234567",
+  Ohood: "345678",
+  Yousef: "456789",
+  Qais: "567890",
+  Saeed: "678901",
+  Faisal: "789012"
+};
+
 let femaleAssignments = {};
 let maleAssignments = {};
 let currentGender = "";
@@ -10,7 +20,7 @@ function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
-// Generate assignments ONCE
+// Generate assignments once
 function generateAssignments(group) {
   let shuffled;
   do {
@@ -25,18 +35,19 @@ function generateAssignments(group) {
   return assignments;
 }
 
-// Generate when page loads
+// Generate on load
 femaleAssignments = generateAssignments(females);
 maleAssignments = generateAssignments(males);
 
 function selectGender(gender) {
   currentGender = gender;
-
   document.getElementById("genderSection").classList.add("hidden");
   document.getElementById("nameSection").classList.remove("hidden");
 
   const dropdown = document.getElementById("nameDropdown");
   dropdown.innerHTML = "";
+  document.getElementById("error").textContent = "";
+  document.getElementById("codeInput").value = "";
 
   const group = gender === "female" ? females : males;
 
@@ -50,6 +61,14 @@ function selectGender(gender) {
 
 function revealAssignment() {
   const name = document.getElementById("nameDropdown").value;
+  const enteredCode = document.getElementById("codeInput").value;
+  const error = document.getElementById("error");
+
+  if (enteredCode !== codes[name]) {
+    error.textContent = "Incorrect code ❌";
+    return;
+  }
+
   const assignments =
     currentGender === "female" ? femaleAssignments : maleAssignments;
 
