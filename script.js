@@ -65,7 +65,7 @@ function revealAssignment() {
   document.getElementById("resultSection").classList.remove("hidden");
 
   document.getElementById("resultText").innerHTML =
-    `${name}, you are buying a gift for <br>🎁 <strong>${assignments[name]}</strong>`;
+    `<strong>${assignments[name]}</strong> حتهدي   ${name} `;
 }
 
 function reset() {
